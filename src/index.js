@@ -15,25 +15,28 @@ const options = {
 
 const server = https.createServer(options, app)
 
-const numCpu = cpus().length + 2
 
 if (cluster.isPrimary) {
-  console.log('Primary process is running');
+  const numCpu = cpus().length + 2
+  console.log(`\n\nPrimary process is running -> listening at 🚀 https://localhost:${PORT} 🚀`);
+  console.log(`Primary cluster setting up ${numCpu} workers...\n`)
 
   for (let i = 0; i < numCpu; i++) {
     cluster.fork();
   }
+
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`\n[ Worker ⚙️ ${worker.process.pid}] died with code: ${code}, and signal: ${signal}`);
+    console.log('\nStarting a new worker - ⚙️\n');
+    cluster.fork();
+  });
+
 } else {
   server.listen(PORT, () => {
     console.log(
-      `[ App ⚙️ ${process.pid} ] -> listening at https://localhost:${PORT} 🚀 pid: ${process.pid}`)
+      `[ Worker ⚙️ ] -> pid: ${process.pid} 🚀 -`)
   });
 }
 
-cluster.on('exit', (worker, code, signal) => {
-  console.log(`\n[ Worker ⚙️ ${worker.process.pid}] died with code: ${code}, and signal: ${signal}`);
-  console.log('\nStarting a new worker');
-  cluster.fork();
-});
 
 
