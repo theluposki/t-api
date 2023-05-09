@@ -1,11 +1,11 @@
-# ECDH-AES-256-GCM - diffie Hellman
+# T-Api
 
 ### How to use this repo
 
 1. Clone the repo using
 
 ```bash
-git clone https://github.com/theluposki/
+git clone https://github.com/theluposki/t-api.git
 ```
 
 2. Open terminal inside the downloaded project and install the dependencies using:
