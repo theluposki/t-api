@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark: #101010;
+  --white: #f6f6f6;
+
+  font-size: 62.5%;
+}
+
+html, body {
+  background-color: var(--white);
+  color: var(--dark);
+  font-size: 1.6rem;
+}
