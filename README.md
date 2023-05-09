@@ -18,6 +18,7 @@ npm install
 
 ```bash
 npm run cert
+```
 
 4. Finally run the script using:
 
