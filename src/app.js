@@ -5,6 +5,7 @@ import cors from "cors"
 /* Import Middlewares*/
 import rateLimit from "./middlewares/rateLimit.js"
 import registerLimit from "./middlewares/registerLimit.js"
+import error from "./middlewares/error.js"
 
 /* Import Routes*/
 import auth from "./routes/auth/auth.js"
@@ -24,5 +25,6 @@ app.use("/", express.static("src/public"))
 app.use(`${v1}/auth`, auth)
 app.use(`${v1}/register`, registerLimit, register)
 
+app.use(error)
 /* Export App */
 export default app

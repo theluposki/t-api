@@ -37,6 +37,3 @@ if (cluster.isPrimary) {
       `[ Worker ⚙️ ] -> pid: ${process.pid} 🚀 -`)
   });
 }
-
-
-
