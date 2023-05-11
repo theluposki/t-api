@@ -1,13 +1,52 @@
-CREATE TABLE users (
-    id varchar(36) NOT NULL PRIMARY KEY,
-    name varchar(255) NOT NULL,
-    email varchar(255) NOT NULL UNIQUE,
-    password varchar(255) NOT NULL,
-    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
 
-INSERT INTO users 
+#mariadb
+CREATE TABLE users (
+  id VARCHAR(36) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(60) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  authorization VARCHAR(20) NOT NULL DEFAULT 'user'
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+--sqlite
+INSERT INTO users
 (id, name, email, password)
-VALUES 
+VALUES
 ("440da3ba-073d-4809-901d-f87586749380", "Lucas", "lu@mail.com", "12345");
+
+
+--Perfil
+--mariadb
+CREATE TABLE user_profiles (
+  id VARCHAR(36) PRIMARY KEY,
+  user_id VARCHAR(36) NOT NULL,
+  nickname VARCHAR(255) NOT NULL UNIQUE,
+  bio TEXT,
+  picture TEXT,
+  links JSON CHECK (JSON_VALID(links)),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT `user_profile_user` FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+--Endereço
+CREATE TABLE addresses (
+  id VARCHAR(36) PRIMARY KEY,
+  user_id VARCHAR(36) NOT NULL,
+  street VARCHAR(255) NOT NULL,
+  number VARCHAR(20) NOT NULL,
+  complement VARCHAR(255),
+  city VARCHAR(100) NOT NULL,
+  state VARCHAR(50) NOT NULL,
+  country VARCHAR(50) NOT NULL,
+  zip_code VARCHAR(20) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE RESTRICT
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+
 

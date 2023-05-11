@@ -1,8 +1,8 @@
 /* Import Deps*/
 import express from "express"
 import cors from "cors"
-import cookieParser from 'cookie-parser';
 
+import cookieParser from 'cookie-parser';
 
 /* Import Middlewares*/
 import rateLimit from "./middlewares/rateLimit.js"
@@ -18,9 +18,11 @@ const app = express()
 const v1 = "/api/v1"
 
 /* Middlewares */
+
+app.use(cookieParser());
+
 app.use(rateLimit)
 app.use(cors())
-app.use(cookieParser());
 app.use(express.json())
 app.use("/", express.static("src/public"))
 

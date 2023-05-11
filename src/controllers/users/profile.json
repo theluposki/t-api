@@ -1,0 +1,10 @@
+{
+  "nickname": "luposki",
+  "bio": "Software engineer and amateur photographer.",
+  "picture":"https://i.pravatar.cc/150?img=33",
+  "links": {
+    "website": "https://www.johndoe.com",
+    "twitter": "https://twitter.com/johndoe",
+    "linkedin": "https://www.linkedin.com/in/johndoe"
+  }
+}
