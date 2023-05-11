@@ -40,10 +40,9 @@ const auth = async (body) => {
       privateKey,
       { algorithm: "RS256" }
     );
-
     return { message: "Autenticado com sucesso!", token };
   } catch (error) {
-    if (error) return { error: "Erro ao registrar" };
+    if (error) return { error: "Erro ao autenticar" };
   } finally {
     if (conn) conn.release();
   }
