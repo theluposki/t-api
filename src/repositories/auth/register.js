@@ -26,7 +26,6 @@ const register = async (body) => {
     );
 
     if (userExists[0]) return { error: "Usuário ja existe!" };
-
     const salt = bcrypt.genSaltSync(10);
     const hashPassword = bcrypt.hashSync(password, salt);
 
@@ -41,7 +40,8 @@ const register = async (body) => {
     );
     if (row.affectedRows === 1) return { message: "Registrado com sucesso!" };
   } catch (error) {
-    if (error) return { error: "Erro ao registrar" };
+    console.log(error);
+    if (error) return { error: "Erro ao registrar!" };
   } finally {
     if (conn) conn.release();
   }

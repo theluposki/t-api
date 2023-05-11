@@ -5,6 +5,6 @@ const route = Router()
 
 import resolver from "../../middlewares/errorAsync.js"
 
-route.post("/", registerController)
+route.post("/", resolver(registerController))
 
 export default route
