@@ -33,7 +33,6 @@ const myProfile = async () => {
   const result = await response.json();
   if(result.id) {
     myprofile.innerHTML = JSON.stringify(result, null, 2)
-    console.log(result)
   }
 }
 

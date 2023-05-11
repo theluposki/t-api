@@ -20,16 +20,12 @@ const myprofile = async (userId) => {
     );
 
     if (!profile[0]) return { error: "Não foi possivel encontrar seu perfil!" };
-
-    console.log(profile[0]["user_id"])
-
-    return profile[0]
+    return profile[0];
   } catch (error) {
     if (error) return { error: "Não foi possivel buscar perfil!" };
   } finally {
     if (conn) conn.release();
   }
-
-}
+};
 
 export default myprofile;
