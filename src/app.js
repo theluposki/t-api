@@ -21,7 +21,7 @@ const v1 = "/api/v1"
 
 app.use(cookieParser());
 
-app.use(rateLimit)
+// app.use(rateLimit)
 app.use(cors())
 app.use(express.json())
 app.use("/", express.static("src/public"))
