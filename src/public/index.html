@@ -12,10 +12,15 @@
 <body>
   <div id="app">
     <header class="header">
-      Header - {{ name }}
+      <div class="logo">
+        <router-link to="/" class="logo-link">
+          <i class='bx bx-git-merge' style='color:#f6f6f6'  ></i>
+          <span>MyReb</span>
+        </router-link>
+      </div>
+      {{ $store.state.user.nickname }}
     </header>
-
-    <main class="main">
+    <main v-if="$store.state.user.nickname" class="main">
       <div class="aside">
         <div class="nav">
           <router-link to="/" class="nav-link" exact-active-class="active">
@@ -31,8 +36,91 @@
       </section>
     </main>
 
+
+    <main v-else class="main">
+      <div class="login">
+        <header class="l-header">
+          <button @click="viewSignIn" :class="verifyClassActiveBtn(vSignInOrSignUp)">Logar</button>
+          <button @click="viewSignUp" :class="verifyClassActiveBtn(!vSignInOrSignUp)">Criar conta</button>
+        </header>
+        <main class="l-main" v-if="vSignInOrSignUp">
+          <h3>Faça login para continuar</h3>
+
+          <div class="l-form">
+
+            <div class="form-control">
+              <label for="email">E-mail</label>
+              <input type="email" v-model="email" placeholder="digite seu e-mail">
+            </div>
+
+            <div class="form-control">
+              <label for="password">Senha</label>
+              <div class="fc-group">
+                <input type="password" id="password" v-model="password" placeholder="digite sua senha">
+                <button @click="viewLockCloseOrOpen">
+                  <i v-if="vlock" class='bx bxs-lock-alt' style='color:#f6f6f6'  ></i>
+                  <i v-else class='bx bx-lock-open-alt' style='color:#f6f6f6' ></i>
+                </button>
+              </div>
+            </div>
+
+            <h4 class="lf-message">{{ messageForm }}</h4>
+
+            <div class="form-control-button">
+              <button class="btn-muted" @click="clearFormLogin">Limpar</button>
+              <button @click="signIn">Entrar</button>
+            </div>
+          </div>
+        </main>
+
+        <main class="l-main" v-else>
+          <h3>Abrir conta</h3>
+
+          <div class="l-form">
+
+            <div class="form-control">
+              <label for="name">Nome</label>
+              <input type="text" v-model="name" placeholder="digite seu nome">
+            </div>
+
+            <div class="form-control">
+              <label for="email">E-mail</label>
+              <input type="email" v-model="email" placeholder="digite seu e-mail">
+            </div>
+
+            <div class="form-control">
+              <label for="password">Senha</label>
+              <div class="fc-group">
+                <input type="password" id="password" v-model="password" placeholder="digite sua senha">
+                <button @click="viewLockCloseOrOpen">
+                  <i v-if="vlock" class='bx bxs-lock-alt' style='color:#f6f6f6'  ></i>
+                  <i v-else class='bx bx-lock-open-alt' style='color:#f6f6f6' ></i>
+                </button>
+              </div>
+            </div>
+
+            <h4 class="lf-message">{{ messageForm }}</h4>
+
+            <div class="form-control-button">
+              <button class="btn-muted" @click="clearFormLogin">Limpar</button>
+              <button @click="signUp">Abrir a conta</button>
+            </div>
+          </div>
+
+
+
+        </main>
+        <footer class="l-footer">
+
+        </footer>
+      </div>
+    </main>
+
     <footer class="footer">
-      footer
+      <span>
+        <i class='bx bx-git-merge' style='color:#f6f6f6'  ></i>
+        <strong>1.0.0</strong>
+      </span>
     </footer>
   </div>
 

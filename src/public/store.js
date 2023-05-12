@@ -1,12 +1,13 @@
 const store = Vuex.createStore({
   state () {
     return {
-      count: 0
+      count: 0,
+      user: {}
     }
   },
   mutations: {
-    increment (state) {
-      state.count++
+    signIn (state, payload) {
+      state.user = payload
     }
   }
 })
