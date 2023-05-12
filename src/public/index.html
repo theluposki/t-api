@@ -44,7 +44,7 @@
           <button @click="viewSignUp" :class="verifyClassActiveBtn(!vSignInOrSignUp)">Criar conta</button>
         </header>
         <main class="l-main" v-if="vSignInOrSignUp">
-          <h3>Faça login para continuar</h3>
+          <h5>Faça login para continuar</h5>
 
           <div class="l-form">
 
@@ -64,17 +64,17 @@
               </div>
             </div>
 
-            <h4 class="lf-message">{{ messageForm }}</h4>
+            <h6 class="lf-message">{{ messageForm }}</h6>
 
             <div class="form-control-button">
-              <button class="btn-muted" @click="clearFormLogin">Limpar</button>
-              <button @click="signIn">Entrar</button>
+              <button @click="clearFormLogin">Limpar</button>
+              <button @click="signIn" class="btn-primary">Entrar</button>
             </div>
           </div>
         </main>
 
         <main class="l-main" v-else>
-          <h3>Abrir conta</h3>
+          <h5>Abrir conta</h5>
 
           <div class="l-form">
 
@@ -99,11 +99,11 @@
               </div>
             </div>
 
-            <h4 class="lf-message">{{ messageForm }}</h4>
+            <h6 class="lf-message">{{ messageForm }}</h6>
 
             <div class="form-control-button">
-              <button class="btn-muted" @click="clearFormLogin">Limpar</button>
-              <button @click="signUp">Abrir a conta</button>
+              <button @click="clearFormLogin">Limpar</button>
+              <button @click="signUp" class="btn-primary">Abrir a conta</button>
             </div>
           </div>
 

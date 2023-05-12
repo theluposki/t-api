@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600;700;800;900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,12 +7,14 @@
 }
 
 :root {
-  --dark: #101010;
-  --dark2: #191919;
-  --dark3: #212121;
-  --dark4: #2a2a2a;
-  --dark5: #323232;
-  --dark6: #3b3b3b;
+  --dark: rgba(16, 16, 16, 0.8);
+  --dark2: rgba(25, 25, 25, 0.8);
+  --dark3: rgba(33, 33, 33, 0.8);
+  --dark4: rgba(42, 42, 42, 0.8);
+  --dark5: rgba(50, 50, 50, 0.8);
+  --dark6: rgba(59, 59, 59, 0.8);
+
+  --primary: linear-gradient( 288deg,  rgba(0,85,255,1) 1.5%, rgba(4,56,115,1) 91.6% );
 
   --white: #fff;
   --white2: #f6f6f6;
@@ -18,14 +22,20 @@
   font-size: 62.5%;
 }
 
-html, body {
-  background-color: var(--white2);
-  color: var(--dark);
+html,
+body {
+  color: var(--white);
   font-size: 1.6rem;
 
   width: 100vw;
   min-height: calc(100vh - 1rem);
-  font-family: sans-serif;
+  background-color: var(--white2);
+
+  font-family: 'Inter', sans-serif;
+
+  background-image: linear-gradient( 288deg,  rgba(0,85,255,1) 1.5%, rgba(4,56,115,1) 91.6% );
+
+
 }
 
 #app {
@@ -38,7 +48,7 @@ html, body {
 }
 
 ::-webkit-scrollbar {
-  width: 0.9rem;
+  width: 0.4rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -150,7 +160,7 @@ html, body {
 }
 
 .nav-link:hover {
-  transition: all ease .4s;
+  transition: all ease 0.4s;
   background-color: var(--dark3);
   box-shadow: 0 0 0.1rem var(--white2);
 }
@@ -160,14 +170,14 @@ html, body {
 }
 
 .nav-link.active {
-  background-color: var(--dark6);
+  background-image: var(--primary);
   box-shadow: 0.1rem 0.1rem 0.1rem var(--dark);
 }
 
 .section {
-  margin: 0.4rem 0;
+  margin: 0.4rem 0.8rem 0.4rem 0;
   border-radius: 0.4rem;
-  background-color: var(--white);
+  background-color: var(--dark3);
   box-shadow: 0 0 0.2rem 0 var(--dark6);
 
   min-width: calc(100vw - 6.2rem);
@@ -192,8 +202,9 @@ html, body {
 }
 
 input {
-  background-color: var(--white2);
-  border: solid 0.1rem transparent;
+  background-color: var(--dark2);
+  color: var(--white2);
+  border: solid 0.1rem var(--dark);
   border-radius: 0.3rem;
   box-shadow: 0 0 0.2rem var(--dark2);
   padding: 0 1.6rem;
@@ -202,7 +213,7 @@ input {
 }
 
 input:focus {
-  outline: solid 0.2rem rebeccapurple;
+  outline: solid 0.2rem var(--white2);
 }
 
 button {
@@ -221,7 +232,7 @@ button i {
 }
 
 button:hover {
-  transition: all ease .4s;
+  transition: all ease 0.4s;
   background-color: var(--dark5);
   color: var(--white2);
 }
@@ -231,17 +242,24 @@ button:active {
 }
 
 .btn-muted {
-  background-color: var(--white2);
+  background-color: var(--dark6);
   border: solid 0.1rem transparent;
   box-shadow: 0 0 0.2rem var(--dark2);
-  color: var(--dark6);
+  color: var(--white2);
+}
+
+.btn-primary {
+  background-image: var(--primary);
+  border: solid 0.1rem transparent;
+  box-shadow: 0 0 0.2rem var(--dark);
+  color: var(--white2);
 }
 
 .login {
   margin: auto auto;
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
+  background-color: var(--dark3);
   min-width: 32rem;
   max-width: 32rem;
   min-height: calc(100vh - 13rem);
@@ -252,7 +270,7 @@ button:active {
 
 .l-header {
   min-height: 4rem;
-  background-color: var(--dark3);
+  background-color: var(--dark2);
   color: var(--white2);
 
   display: flex;
@@ -266,7 +284,7 @@ button:active {
 }
 
 .lh-btn-active {
-  background-color: rebeccapurple;
+  background-image: var(--primary);
 }
 
 .l-main {
@@ -283,15 +301,15 @@ button:active {
   overflow-y: auto;
 }
 
-.l-main h3 {
+.l-main h5 {
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--dark6);
+  color: var(--white);
 }
 
 .l-footer {
   min-height: 1rem;
-  background-color: var(--dark3);
+  background-color: var(--dark2);
   color: var(--white2);
 
   display: flex;
@@ -319,7 +337,7 @@ button:active {
 }
 
 .form-control label {
-  color: var(--dark6);
+  color: var(--white);
   font-size: 1.4rem;
   margin-bottom: 0.6rem;
 }
@@ -337,9 +355,6 @@ button:active {
 .lf-message {
   text-align: center;
   font-size: 1.4rem;
-  color: rebeccapurple;
+  color: var(--white2);
   margin: 0.4rem 0;
 }
-
-
-
