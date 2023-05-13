@@ -3,8 +3,8 @@ const FooterMain = {
   `
   <footer class="footer">
     <span>
+      1.0.0
       <i class='bx bx-git-merge' style='color:#f6f6f6'  ></i>
-      <strong>1.0.0</strong>
     </span>
   </footer>
   `,

@@ -8,7 +8,13 @@ const Login = {
       <button @click="viewSignUp" :class="verifyClassActiveBtn(!vSignInOrSignUp)">Criar conta</button>
     </header>
     <main class="l-main" v-if="vSignInOrSignUp">
-      <h5>Faça login para continuar</h5>
+      
+      <div class="l-logo">
+        <i class='bx bx-git-merge' style='color:#f6f6f6'  ></i>
+        <span>MyReb</span>
+      </div>
+      
+      <h4 class="title">Bem-vindo! 😊</h4>
 
       <div class="l-form">
 
@@ -34,11 +40,16 @@ const Login = {
           <button @click="clearFormLogin">Limpar</button>
           <button @click="signIn" class="btn-primary">Entrar</button>
         </div>
+        
+        <p class="l-p">
+          "Oi! Seus amigos estão esperando por você! Faça login agora e junte-se a eles para não perder nenhum momento da diversão que está rolando."
+        </p>
+        
       </div>
     </main>
 
     <main class="l-main" v-else>
-      <h5>Abrir conta</h5>
+      <h4 class="title">Abrir uma conta na <strong>MyReb</strong></h4>
 
       <div class="l-form">
 
@@ -69,6 +80,10 @@ const Login = {
           <button @click="clearFormLogin">Limpar</button>
           <button @click="signUp" class="btn-primary">Abrir a conta</button>
         </div>
+        
+        <p class="l-p">
+          Através da plataforma MyReb, é viável estabelecer comunicação por meio de mensagens e chamadas privadas, permitindo que você seja genuíno(a), converse livremente e mantenha contato com as pessoas mais significativas em sua vida, não importando a distância que as separem.
+        </p>
       </div>
 
 
