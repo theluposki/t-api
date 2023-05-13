@@ -1,4 +1,4 @@
-import router from "./libs/routes.js"
+import router from "./routes.js"
 import store from "./store.js"
 import Login from "./components/login.js"
 import HeaderMain from "./components/header.js"
