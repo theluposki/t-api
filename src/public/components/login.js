@@ -4,7 +4,7 @@ const Login = {
   <main class="main">
   <div class="login">
     <header class="l-header">
-      <button @click="viewSignIn" :class="verifyClassActiveBtn(vSignInOrSignUp)">Logar</button>
+      <button @click="viewSignIn" :class="verifyClassActiveBtn(vSignInOrSignUp)">Acessar</button>
       <button @click="viewSignUp" :class="verifyClassActiveBtn(!vSignInOrSignUp)">Criar conta</button>
     </header>
     <main class="l-main" v-if="vSignInOrSignUp">

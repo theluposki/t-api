@@ -12,7 +12,7 @@ const routes = [
     path: '/chat',
     component: Chat,
     children: [
-      { path: 'conversation', component: ChatMainfrom },
+      { path: 'conversation/:nickname', component: ChatMainfrom, props: true },
       { path: 'contacts', component: Contacts },
       { path: 'settings', component: Config },
     ],
