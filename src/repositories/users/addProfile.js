@@ -19,7 +19,7 @@ const addProfile = async (userId, body) => {
       `SELECT nickname FROM user_profiles WHERE nickname=?;`,
       [nickname]
     );
-    console.log(userExists)
+
     if (userExists[0]) return { error: "Já existe um usuário com esse nome de usuário!" };
     const row = await conn.query(
       `
@@ -30,8 +30,6 @@ const addProfile = async (userId, body) => {
 	    `,
       [id, userId, nickname, bio, picture, links]
     );
-
-    console.log(row)
     if (row.affectedRows === 1) return { message: "Perfil adicionado com sucesso!" };
   } catch (error) {
     if (error) return { error: "Não foi possivel adicionar perfil!" };

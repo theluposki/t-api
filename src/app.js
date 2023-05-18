@@ -18,11 +18,12 @@ const app = express()
 const v1 = "/api/v1"
 
 /* Middlewares */
-
-app.use(cookieParser());
-
 // app.use(rateLimit)
-app.use(cors())
+app.use(cors({
+  origin: 'https://localhost:5173',
+  credentials: true
+}))
+app.use(cookieParser());
 app.use(express.json())
 app.use("/", express.static("src/public"))
 
