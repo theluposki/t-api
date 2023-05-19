@@ -3,8 +3,6 @@ import db from "../../db/db.js";
 const findUserByNickname = async (nickname) => {
   let conn;
 
-  console.log(nickname)
-
   try {
     conn = await db.getConnection();
     const users = await conn.query(
