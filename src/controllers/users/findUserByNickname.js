@@ -6,7 +6,7 @@ const findUsersByNickname = async (req,res) => {
   console.log(req.body)
   const users = await findUserByNickname(nickname)
 
-  if(users.error) return res.status(400).json(result)
+  if(users.error) return res.status(400).json(users)
   res.status(200).json(users)
 }
 
