@@ -15,9 +15,6 @@ const getMyFriends = async (userId) => {
       `,
       [userId, userId]
     );
-
-    console.log(friends)
-
     return friends
   } catch (error) {
     if (error) return { error: "Não foi possivel buscar amigos." };

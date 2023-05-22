@@ -4,6 +4,7 @@ import { readFileSync }from "node:fs"
 import https from "node:https"
 import cluster from "node:cluster"
 import { cpus } from "node:os"
+import { IO } from './socket.io.js'
 
 dotenv.config()
 const PORT = process.env.PORT || 3000
@@ -15,6 +16,7 @@ const options = {
 
 const server = https.createServer(options, app)
 
+IO(server)
 
 if (cluster.isPrimary) {
   const numCpu = cpus().length + 2

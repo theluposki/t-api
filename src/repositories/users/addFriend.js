@@ -40,9 +40,6 @@ const addFriend = async (userId, body) => {
         VALUES (?, ?, ?);
         `, [id2, FriendUser[0].user_id, userId]
       )
-        console.log("updateRequestFriends: ", updateRequestFriends)
-        console.log("addedFriend: ", addedFriend)
-        console.log("addedFriend2: ", addedFriend2)
 
       if (updateRequestFriends.affectedRows === 1 && addedFriend.affectedRows === 1 && addedFriend2.affectedRows === 1) {
         return { message: "Amigo adicionado." }
