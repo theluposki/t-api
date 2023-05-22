@@ -6,6 +6,8 @@ const addFriend = async (userId, body) => {
   const { nickname, requestId } = body
 
   const id = randomUUID()
+  const id2 = randomUUID()
+
 
   let conn;
 
@@ -32,7 +34,17 @@ const addFriend = async (userId, body) => {
         `, [id, userId, FriendUser[0].user_id]
       )
 
-      if (updateRequestFriends.affectedRows === 1 && addedFriend.affectedRows === 1) {
+      const addedFriend2 = await conn.query(
+        `
+        INSERT INTO friends (id, user1_id, user2_id)
+        VALUES (?, ?, ?);
+        `, [id2, FriendUser[0].user_id, userId]
+      )
+        console.log("updateRequestFriends: ", updateRequestFriends)
+        console.log("addedFriend: ", addedFriend)
+        console.log("addedFriend2: ", addedFriend2)
+
+      if (updateRequestFriends.affectedRows === 1 && addedFriend.affectedRows === 1 && addedFriend2.affectedRows === 1) {
         return { message: "Amigo adicionado." }
       }
   } catch (error) {
