@@ -75,3 +75,10 @@ CREATE TABLE friends (
   FOREIGN KEY (user1_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (user2_id) REFERENCES users(id) ON DELETE CASCADE
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+
+SELECT f.id, up.nickname, up.picture
+FROM user_profiles up JOIN friends f ON up.user_id = f.user2_id
+WHERE
+f.user1_id = "884390d6-7bff-463f-9475-3f4d863d8bae"
+OR f.user2_id = "884390d6-7bff-463f-9475-3f4d863d8bae";
