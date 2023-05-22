@@ -11,8 +11,7 @@ const getMyFriends = async (userId) => {
       SELECT f.id, up.nickname, up.picture
       FROM user_profiles up JOIN friends f ON up.user_id = f.user2_id
       WHERE
-      f.user1_id = ?
-      OR f.user2_id = ?;
+      f.user1_id = ?;
       `,
       [userId, userId]
     );
