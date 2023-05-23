@@ -1,5 +1,4 @@
 import { Server } from "socket.io";
-import { randomUUID } from "node:crypto"
 
 export const IO = (server) => {
   const io = new Server(server, {
@@ -20,8 +19,10 @@ export const IO = (server) => {
       if (socketNicknameMap[nickname]) {
         delete socketNicknameMap[nickname];
         socketNicknameMap[nickname] = socket.id;
+        console.log(nickname)
       } else {
         socketNicknameMap[nickname] = socket.id;
+        console.log(nickname)
       }
 
       socket.emit("salutation", `Seja Bem-vindo ${nickname}`);
@@ -30,19 +31,14 @@ export const IO = (server) => {
     });
 
     // Send a message to a socket based on the nickname
-    socket.on('sendMessageToNickname', ({ nickname, message }) => {
-      const socketId = socketNicknameMap[nickname];
+    socket.on('sendMessageToNickname', (data) => {
+      const socketId = socketNicknameMap[data.to];
 
       if (socketId) {
-        io.to(socketId).emit('messageReceived', {
-          id: randomUUID(),
-          from: 'user',
-          to: nickname,
-          message,
-          createdAt: Date.now(),
-        });
+        io.to(socketId).emit('messageReceived', data);
       } else {
         console.log("não foi encontrado esse socket")
+        console.log(socketNicknameMap, process.pid)
         console.log(socketId)
       }
     });

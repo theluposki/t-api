@@ -19,7 +19,8 @@ const server = https.createServer(options, app)
 IO(server)
 
 if (cluster.isPrimary) {
-  const numCpu = cpus().length + 2
+  // const numCpu = cpus().length + 2
+  const numCpu = 1
   console.log(`\n\nPrimary process is running -> listening at 🚀 https://localhost:${PORT} 🚀`);
   console.log(`Primary cluster setting up ${numCpu} workers...\n`)
 
